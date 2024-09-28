@@ -1,6 +1,6 @@
 import datetime
 import streamlit as st
-import pandas_datareader as pdr
+import yfinance as yf
 import cufflinks as cf
 
 APP_NAME = "Stock App!"
@@ -29,8 +29,8 @@ ticker = st.sidebar.selectbox('Select ticker', sorted(TICKERS), index=0)
 start_date = st.sidebar.date_input('Start date', datetime.datetime(2021, 1, 1))
 end_date = st.sidebar.date_input('End date', datetime.datetime.now().date())
 
-# Fetch the data for specified ticker e.g. AAPL from yahoo finance
-df_ticker = pdr.DataReader(ticker, 'yahoo', start_date, end_date)
+# Fetch the data for the specified ticker using yfinance
+df_ticker = yf.download(ticker, start=start_date, end=end_date)
 
 st.header(f'{ticker} Stock Price')
 
@@ -42,13 +42,12 @@ if st.checkbox('Show raw data'):
 # Create candlestick chart 
 qf = cf.QuantFig(df_ticker, legend='top', name=ticker)
 
-
 # Technical Analysis Studies can be added on demand
 # Add Relative Strength Indicator (RSI) study to QuantFigure.studies
 qf.add_rsi(periods=20, color='java')
 
 # Add Bollinger Bands (BOLL) study to QuantFigure.studies
-qf.add_bollinger_bands(periods=20,boll_std=2,colors=['magenta','grey'],fill=True)
+qf.add_bollinger_bands(periods=20, boll_std=2, colors=['magenta', 'grey'], fill=True)
 
 # Add 'volume' study to QuantFigure.studies
 qf.add_volume()
