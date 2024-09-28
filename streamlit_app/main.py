@@ -6,14 +6,14 @@ st.set_page_config(
 )
 
 st.markdown(
-    """# 📈 **Stockastic**
+    """# 📈 **Stock Analyzer**
 ### **Predicting Stocks with ML**
 
-**Stockastic is an ML-powered stock price prediction app built with Python and Streamlit. It utilizes machine learning models to forecast stock prices and help investors make data-driven decisions.**
+**Stock Analyzer is an ML-powered stock price prediction app built with Python and Streamlit. It utilizes machine learning models to forecast stock prices and help investors make data-driven decisions.**
 
 ## 🏗️ **How It's Built**
 
-Stockastic is built with these core frameworks and modules:
+Stock Analyzer is built with these core frameworks and modules:
 
 - **Streamlit** - To create the web app UI and interactivity 
 - **YFinance** - To fetch financial data from Yahoo Finance API
@@ -48,7 +48,3 @@ Some potential features for future releases:
 - **Additional fundamental data**
 - **User account system**
 
-## **⚖️ Disclaimer**
-**This is not financial advice! Use forecast data to inform your own investment research. No guarantee of trading performance.**
-"""
-)
